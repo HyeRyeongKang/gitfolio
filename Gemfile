@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'rails_db'
+gem 'chartkick' , '~> 1.2.4'
+gem 'groupdate' , '~> 2.1.1'
+
 gem 'bootstrap','~>4.1.1'
 gem 'simple_form'
 gem 'carrierwave'

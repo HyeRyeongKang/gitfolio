@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  
   root 'content#index'
+  get 'folio/folio'
+ post 'folio/folio'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
