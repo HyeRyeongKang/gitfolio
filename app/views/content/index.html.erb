@@ -10,6 +10,22 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <title>Document</title>
 <link rel = "stylesheet" type="text/css" href="content.scss">
+<style>
+    .back_container{
+    position: relative;
+    text-align : left;
+}
+.face{
+    position: relative;
+    left:10px; /*+수 커질수록 밑으로 내려감*/
+    top:-60px;
+    text-align : center;
+}
+.aa{
+    margin-top:100px;
+    text-align : center;
+}
+</style>
 </head>
 
 <body>
@@ -29,10 +45,10 @@
     </ul>
 
     <div class="back_container">
-     <img src="../../assets/images/ddd.jpg" alt=" 배경사진 " height="300px" width="1280px">
+     <img src=<%= asset_path 'ddd.jpg'%> alt=" 배경사진 " height="300px" width="1280px">
     </div>
     <div class = "face ">   
-    <img class = "face_image" src="https://project2-hanbi.c9users.io/assets/images/DSC01965.JPG" alt="얼굴사진"height="120px" width ="120px" style="border-radius: 70px;">
+    <img class = "face_image" src=<%= asset_path 'DSC01965.JPG'%> alt="얼굴사진"height="120px" width ="120px" style="border-radius: 70px;">
     </div>
     
 <div class="aa">
