@@ -17,4 +17,7 @@
 //= require jquery.min.js
 //= require bootstrap.min.js
 //= require jquery.magnific-popup.min.js
+
+//= require popper
+//= require bootstrap-sprockets
 //= require_tree .
