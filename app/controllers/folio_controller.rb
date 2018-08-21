@@ -79,7 +79,7 @@ class FolioController < ApplicationController
                     if lg !=nil
                     graph = Graph.new
                     graph.gid = @folio.id
-                    graph.lang = lg.text
+                    graph.langig = lg.text
                     graph.save
                     
                     end
