@@ -11,15 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180810044804) do
+ActiveRecord::Schema.define(version: 20180819155105) do
 
   create_table "folios", force: :cascade do |t|
+    t.string   "user_id"
+    t.string   "gid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "graphs", force: :cascade do |t|
+    t.integer  "gid"
     t.string   "lang"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "infos", force: :cascade do |t|
+    t.integer  "gid"
+    t.string   "list"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "readmes", force: :cascade do |t|
+    t.text     "readme"
+    t.integer  "rid"
+    t.integer  "gid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

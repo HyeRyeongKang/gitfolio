@@ -4,6 +4,11 @@ gem 'rails_db'
 gem 'chartkick', '~> 1.2.4'
 gem 'groupdate', '~> 2.1.1'
 
+
+gem 'nokogiri'
+gem 'openurl'
+
+
 gem 'bootstrap', '~> 4.1.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 

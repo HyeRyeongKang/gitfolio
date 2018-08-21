@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'folio#folio'
-  get 'folio/folio'
-  
+  root 'folio#index'
+  post '/folio/create'=>'folio#create'
+  get "/folio/folio/:id" =>'folio#folio'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
