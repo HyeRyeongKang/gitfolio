@@ -4,6 +4,8 @@ gem 'rails_db'
 gem 'chartkick', '~> 1.2.4'
 gem 'groupdate', '~> 2.1.1'
 
+gem 'bootstrap'
+
 
 gem 'nokogiri'
 gem 'openurl'
@@ -16,7 +18,7 @@ gem "font-awesome-rails"
 
 gem 'jquery-easing-rails'
 
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.8'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
