@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <html>
+    <html lang="en">
 <head>
   <title>Workspace</title>
-  <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
-  <%= stylesheet_link_tag 'http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css' %>
-  <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <%= stylesheet_link_tag 'application', media: 'all'%>
+    
+     <title>Creative - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap core CSS -->
+   <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+    <!-- Plugin CSS -->
+   <!-- <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">-->
+
+    <!-- Custom styles for this template -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
 </head>
-<body>
+<body id ="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
 <%= yield %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "http://www.google.com/jsapi", "chartkick" %>
+    <%= stylesheet_link_tag 'http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css' %>
+    <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    
+    <script src="vendor/jquery/jquery.min.js"></script>
+    
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/creative.min.js"></script>
+
+
 
 </body>
 </html>
