@@ -25,7 +25,7 @@ class FolioController < ApplicationController
                 
                 @lists.each do |l|
                     @infos = Info.new
-                    @infos.gid = @folio.id
+                    @infos.gid = @folio.gid
                     @infos.list = l.text.strip
                     @infos.save
                     
@@ -40,7 +40,7 @@ class FolioController < ApplicationController
                             rm.readme = readme
                             
                             rm.rid = @infos.id
-                            rm.gid = @folio.id
+                            rm.gid = @folio.gid
                             rm.save
                           end
                         rescue OpenURI::HTTPError => e
@@ -49,7 +49,7 @@ class FolioController < ApplicationController
                             rm = Readme.new
                             rm.readme = "등록된 Readme.md 파일이 없습니다."
                             rm.rid = @infos.id
-                            rm.gid = @folio.id
+                            rm.gid = @folio.gid
                             rm.save
                           else
                             raise e
@@ -78,31 +78,32 @@ class FolioController < ApplicationController
                     lg = lang.at("span[@itemprop = 'programmingLanguage']")
                     if lg !=nil
                     graph = Graph.new
-                    graph.gid = @folio.id
-                    graph.langig = lg.text
+                    graph.gid = @folio.gid
+                    graph.lang = lg.text
                     graph.save
-                    
+
                     end
                 end
                 
             
-            redirect_to "/folio/folio/#{@folio.id}"
+            redirect_to "/folio/folio/#{@folio.gid}"
              
-        else redirect_to "/folio/folio/#{f.id}"
+        else redirect_to "/folio/folio/#{f.gid}"
         end
     end
     
     def folio
-        @folio = Folio.find(params[:id])
+        s_gid = params[:gid].to_s
+        @folio = Folio.find_by_gid(s_gid)
         @name = @folio.gid
         @number = @folio.id
- 
-        @graphs = Graph.where(gid: params[:id])
+
+        @graphs = Graph.where(gid: params[:gid])
         
        # @graphs = Graph.all
         
-        @infos = Info.where(gid: params[:id])
-        @readmes = Readme.where(gid: params[:id])
+        @infos = Info.where(gid: params[:gid])
+        @readmes = Readme.where(gid: params[:gid])
     
     end
 end

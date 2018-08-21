@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'folio#index'
   post '/folio/create'=>'folio#create'
-  get "/folio/folio/:id" =>'folio#folio'
+  get "/folio/folio/:gid" =>'folio#folio', :constraints => { :gid => /[a-zA-Z0-9_]+/ }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
