@@ -8,3 +8,26 @@
 .copyright {
   background-color: darken($secondary, 10%);
 }
+
+
+
+.footer{
+    a{
+        color: #ffffff;
+        &:hover {
+            color:#222;
+        }
+    }
+        small{
+        float:left;
+        
+    }
+    ul {
+        float:right;
+        list-style:none;
+        li {
+            float:left;
+            margin-left:15px;
+        }
+    }
+} 
