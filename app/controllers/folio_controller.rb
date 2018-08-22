@@ -17,7 +17,10 @@ class FolioController < ApplicationController
                 @folio.gid = params[:input_name]
                 @folio.user_id=current_user.nick
                 @folio.save
-                    
+                
+                @user = User.find_by_nick(@folio.user_id)
+                @user.github=params[:input_name]
+                @user.save
                     
                 ##############    
                 url = "https://github.com/"+@folio.gid
@@ -101,6 +104,7 @@ class FolioController < ApplicationController
         @name = @folio.gid
         @number = @folio.id
         @user = User.find_by_nick(@folio.user_id)
+        @experiences=Experience.where(usernick: @folio.user_id)
 
         @graphs = Graph.where(gid: @folio.id)
         
@@ -110,6 +114,43 @@ class FolioController < ApplicationController
         @readmes = Readme.where(gid: @folio.id)
     
     end
+    
+    def excreate
+      @expost=Experience.new
+      @expost.usernick=current_user.nick
+      @expost.name=params[:name]
+      @expost.work=params[:work]
+      @expost.start=params[:start]
+      @expost.end=params[:end]
+      @expost.content=params[:content]
+      @expost.save
+      
+      @folios=Folio.where(user_id: current_user.nick)
+      
+      
+      redirect_to :back
+    end
+    
+    def delete
+      Experience.find(params[:id]).destroy
+      redirect_to :back
+    end
+    
+    def update
+      @expost=Experience.find(params[:id])
+      @expost.usernick=current_user.nick
+      @expost.name=params[:name]
+      @expost.work=params[:work]
+      @expost.start=params[:start]
+      @expost.end=params[:end]
+      @expost.content=params[:content]
+      @expost.save
+      
+      redirect_to :back
+    end  
+    
+    def intro
+    end  
     
     def user
     end

@@ -64,38 +64,34 @@
       </div>
       <div class="col-md-4">
         <% if current_user.nick==@folio.user_id %>
-        <a class="alert-link" href="/" style="position: absolute; right: 12px;">추가</a>
+            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-ex" style="position: absolute; right: 12px;">
+              추가
+            </a>
         <% end %>
         <h3 class="my-3">Experience</h3>
         <hr>
-        <div style="position: absolute; right: 12px;">
+        <% @experiences.each do |e| %>
+                <div style="position: absolute; right: 12px;">
           <% if current_user.nick==@folio.user_id %>
-        <a class="alert-link" href="/">삭제 |</a>
-        <a class="alert-link" href="/">수정</a>
+        <a class="alert-link" href="/folio/delete/<%=e.id %>">삭제 |</a>
+         <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-ex-<%=e.id %>" style="font-weight: bold;">
+              수정
+        </a>
         <% end %>
         </div>
-        <p style="font-size: 25px; font-weight: bold;">Likelion 6기</p>
+        <p style="font-size: 28px; font-weight: bold;"><%=e.name %></p>
+        <p style="font-size: 15px; font-weight: bold;"><%=e.work %></p>
+        <p style="font-size: 10px; font-weight: bold;"><%=e.start %>~<%=e.end %></p>
         <ul>
-          <li>어쩌고 저쩌고ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ</li>
+          <li><%=e.content %></li>
         </ul>
         <hr style="border: dotted 1px #d9d9d9";>
-        <h4>Hackerthon</h4>
-        <ul>
-          <li>어쩌고저쩌고~</li>
-        </ul>
-        <hr style="border: dotted 1px #d9d9d9";>
-        <h4>공모전</h4>
-        <ul>
-          <li>어쩌고 저쩌고~</li>
-        </ul>
-        <hr style="border: dotted 1px #d9d9d9";>
-        <h4>인턴</h4>
-        <ul>
-          <li>어쩌고 저쩌고~</li>
-        </ul>
-        <hr style="border: dotted 1px #d9d9d9";>
+         <% end %>
       </div>
       <div class="col-md-4">
+        <% if current_user.nick==@folio.user_id %>
+        <a class="alert-link" href="/folio/intro" style="position: absolute; right: 12px;">수정</a>
+        <% end %>
           <h3 class="my-3">History</h3>
           <hr>
       </div>
@@ -190,9 +186,7 @@
         <div class="col-md-4">
             <h4 class="text-uppercase mb-4">About Team</h4>
             <p class="lead mb-0">Inha University
-            <p class="lead mb-0">LikeLion 6기 제주많은 소녀들
-            <br>
-              <a href="https://likelion.net/">LikeLion</a></p>
+            <p class="lead mb-0"><a href="https://likelion.net/">LikeLion 6기</a> 제주많은 소녀들</p>
           </div>
           <div class="col-md-4 mb-5 mb-lg-0">
             <h4 class="text-uppercase mb-4">Around the Web</h4>
@@ -246,9 +240,9 @@
       </a>
     </div>
 
-    <!-- Portfolio Modals -->
+    <!-- ============================================Portfolio Modals============================================ -->
 
-    <!-- Portfolio Modal 1 -->
+    <!-- Project Modal -->
     <% @infos.each do |info| %>
     <% @readme = @readmes.find_by_rid(info.id)%>
     <div class="portfolio-modal mfp-hide" id="portfolio-modal-<%=info.id%>">
@@ -273,6 +267,85 @@
     </div>
     <% end %>
 
+  <!-- 추가 Modal -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-ex">
+      <div class="portfolio-modal-dialog bg-white">
+        <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#portfolio">
+          <i class="fa fa-3x fa-times"></i>
+        </a>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h2 class="text-secondary">경력 추가하기</h2>
+              <hr>
+              <form action="/folio/excreate" method="post">
+    <%=hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <label for="name">회사명</label><br>
+    <input type="text" name="name" class="exp"><br>
+    
+     <label for="work">직책/직무</label><br>
+    <input type="text" name="work" class="exp"><br>
+    
+     <label for="start">시작날짜</label><br>
+    <input type="date" name="start" class="exp"><br>
+    
+     <label for="end">종료날짜</label><br>
+    <input type="date" name="end" class="exp"><br>
+    
+    <label for="content">설명</label><br> 
+    <textarea name="content" id="content"></textarea><br>
+    <input type="submit" value="등록" id="send" class="btn btn-primary btn-lg rounded-pill">
+    
+              <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#portfolio">
+                <i class="fa fa-close"></i>
+                취소</a>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 수정 Modal -->
+     <% @experiences.each do |e| %>
+        <div class="portfolio-modal mfp-hide" id="portfolio-modal-ex-<%=e.id %>">
+      <div class="portfolio-modal-dialog bg-white">
+        <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#portfolio">
+          <i class="fa fa-3x fa-times"></i>
+        </a>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h2 class="text-secondary">경력 추가하기</h2>
+              <hr>
+              <form action="/folio/update/<%=e.id %>" method="post">
+    <%=hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <label for="name">회사명</label><br>
+    <input type="text" name="name" class="exp" value="<%=e.name %>"><br>
+    
+     <label for="work">직책/직무</label><br>
+    <input type="text" name="work" class="exp" value="<%=e.work %>"><br>
+    
+     <label for="start">시작날짜</label><br>
+    <input type="date" name="start" class="exp" value="<%=e.start %>"><br>
+    
+     <label for="end">종료날짜</label><br>
+    <input type="date" name="end" class="exp" value="<%=e.end %>"><br>
+    
+    <label for="content">설명</label><br> 
+    <textarea name="content" id="content"><%=e.content %></textarea><br>
+    <input type="submit" value="수정" id="send" class="btn btn-primary btn-lg rounded-pill">
+    
+              <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#portfolio">
+                <i class="fa fa-close"></i>
+                취소</a>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
     
   </body>
 

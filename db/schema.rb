@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180822074758) do
+ActiveRecord::Schema.define(version: 20180822132049) do
+
+  create_table "experiences", force: :cascade do |t|
+    t.string   "usernick"
+    t.string   "name"
+    t.string   "work"
+    t.string   "start"
+    t.string   "end"
+    t.string   "content"
+    t.string   "git"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "folios", force: :cascade do |t|
     t.string   "user_id"
