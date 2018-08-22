@@ -15,6 +15,7 @@ class FolioController < ApplicationController
         if f.nil?
                 @folio = Folio.new
                 @folio.gid = params[:input_name]
+                @folio.user_id=current_user.nick
                 @folio.save
                     
                     
@@ -99,6 +100,7 @@ class FolioController < ApplicationController
         @folio = Folio.find_by_gid(s_gid)
         @name = @folio.gid
         @number = @folio.id
+        @user = User.find_by_nick(@folio.user_id)
 
         @graphs = Graph.where(gid: @folio.id)
         
@@ -107,5 +109,8 @@ class FolioController < ApplicationController
         @infos = Info.where(gid: @folio.id)
         @readmes = Readme.where(gid: @folio.id)
     
+    end
+    
+    def user
     end
 end

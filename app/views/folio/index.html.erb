@@ -39,7 +39,9 @@ div#main_content{
             <a class="nav-link py-3 px-0 px-lg-3 rounded " href="#portfolio">My Page</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded " href="#contact">Logout</a>
+            <div class="nav-link py-3 px-0 px-lg-3 rounded ">
+            <%= link_to 'Logout', '/users/sign_out', method: :delete,  class: "alert-link" %>
+            </div>
           </li>
         </ul>
       </div>

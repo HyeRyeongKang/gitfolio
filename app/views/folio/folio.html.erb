@@ -7,7 +7,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">GitFolio</a>
+      <a class="navbar-brand js-scroll-trigger" href="/">GitFolio</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fa fa-bars"></i>
@@ -42,15 +42,14 @@
         <img class="img-fluid" src="http://placehold.it/300x200" alt="">
       </div>
       <div class="col-md-4">
-        <h3 class="my-3">About 000</h3>
+        <h3 class="my-3">About <%=@user.name %></h3>
         <hr>
         <ul>
-          <li>Web developer</li>
-          <li>email : 0000000000@likelion.org</li>
-          <li>phone : 000-0000-0000</li>
-          <li>address : seoul</li>
-          <li>Inha University</li>
-          <li>github : <a href="https://github.com/HyeRyeongKang">HyeRyeongKang</a></li>
+          <li>job : <%=@user.job %></li>
+          <li>email : <%=@user.email %></li>
+          <li>phone : <%=@user.phone %></li>
+          <li>address : <%=@user.address %></li>
+          <li>github : <a href="https://github.com/<%=@name %>"><%=@name %></a></li>
         </ul>  
       </div>
       </div>
@@ -64,9 +63,18 @@
         
       </div>
       <div class="col-md-4">
+        <% if current_user.nick==@folio.user_id %>
+        <a class="alert-link" href="/" style="position: absolute; right: 12px;">추가</a>
+        <% end %>
         <h3 class="my-3">Experience</h3>
         <hr>
-        <h4>Likelion 6기</h4>
+        <div style="position: absolute; right: 12px;">
+          <% if current_user.nick==@folio.user_id %>
+        <a class="alert-link" href="/">삭제 |</a>
+        <a class="alert-link" href="/">수정</a>
+        <% end %>
+        </div>
+        <p style="font-size: 25px; font-weight: bold;">Likelion 6기</p>
         <ul>
           <li>어쩌고 저쩌고ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ</li>
         </ul>

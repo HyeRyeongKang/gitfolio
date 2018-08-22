@@ -4,6 +4,7 @@ gem 'rails_db'
 gem 'chartkick', '~> 1.2.4'
 gem 'groupdate', '~> 2.1.1'
 
+gem 'devise'
 
 gem 'nokogiri'
 gem 'openurl'

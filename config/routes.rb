@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'folio#main'
   get 'folio/index' => 'folio#index'
   post '/folio/create'=>'folio#create'
