@@ -4,7 +4,6 @@ class CreateFolios < ActiveRecord::Migration
       
       t.string :user_id
       t.string :gid
-
       t.timestamps null: false
     end
   end

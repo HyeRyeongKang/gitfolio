@@ -23,6 +23,16 @@
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
           </li>
+ 
+          <% if user_signed_in? %>
+          <li class="nav-item mx-0 mx-lg-1">
+            <%= link_to "logout", destroy_user_session_path, method: "DELETE" , class: "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"%></a>
+          </li>
+          <% else %>
+          <li class="nav-item mx-0 mx-lg-1">
+             <%= link_to "log in", new_user_session_path, class: "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" %></a>
+          </li>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -63,20 +73,25 @@
         
       </div>
       <div class="col-md-4">
+        <% if user_signed_in? %>
         <% if current_user.nick==@folio.user_id %>
             <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-ex" style="position: absolute; right: 12px;">
               추가
             </a>
         <% end %>
+        <% end %>
         <h3 class="my-3">Experience</h3>
         <hr>
         <% @experiences.each do |e| %>
                 <div style="position: absolute; right: 12px;">
+                  
+        <% if user_signed_in? %>
           <% if current_user.nick==@folio.user_id %>
         <a class="alert-link" href="/folio/delete/<%=e.id %>">삭제 |</a>
          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-ex-<%=e.id %>" style="font-weight: bold;">
               수정
         </a>
+        <% end %>
         <% end %>
         </div>
         <p style="font-size: 28px; font-weight: bold;"><%=e.name %></p>
@@ -89,8 +104,11 @@
          <% end %>
       </div>
       <div class="col-md-4">
+        
+        <% if user_signed_in? %>
         <% if current_user.nick==@folio.user_id %>
         <a class="alert-link" href="/folio/intro" style="position: absolute; right: 12px;">수정</a>
+        <% end %>
         <% end %>
           <h3 class="my-3">History</h3>
           <hr>
