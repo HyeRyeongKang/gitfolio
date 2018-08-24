@@ -54,8 +54,12 @@ div#main_content{
     </div>
     
     
-    <div class = "face">  
-    <img class = "face_image" src=<%= @user.avatar %> alt="얼굴사진"height="150px" width ="150px" style="display:inline-block;border-radius: 70px; padding:0px;margin:0px;">
+    <div class = "face">
+      <% if @user.avatar.blank? %>
+        <img class = "face_image" src=<%= asset_path 'DSC01965.JPG'%> alt="얼굴사진"height="150px" width ="150px" style="display:inline-block;border-radius: 70px; padding:0px;margin:0px;">
+      <% else %>
+        <img class = "face_image" src=<%= @user.avatar %> alt="얼굴사진"height="150px" width ="150px" style="display:inline-block;border-radius: 70px; padding:0px;margin:0px;">
+      <% end %>
     </div>
     <div id="main_content" >
 <div class="aa">
