@@ -12,7 +12,8 @@
  *= require font-awesome
  *= require bootstrap.min.css
  *= require magnific-popup.css
- *
+ *= require_tree .
+ *= require_self
  */
  @import "bootstrap";
 @import "variables.scss";

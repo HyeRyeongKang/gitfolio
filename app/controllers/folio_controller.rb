@@ -4,6 +4,9 @@ require 'open-uri'
 
 class FolioController < ApplicationController
     
+    def main
+    
+    end
     
     def index
         

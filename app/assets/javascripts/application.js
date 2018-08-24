@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.easing
+//= require scrollReveal
 //= require turbolinks
 //= require jquery.min.js
 //= require bootstrap.min.js

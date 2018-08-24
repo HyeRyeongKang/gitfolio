@@ -3,7 +3,10 @@ source 'https://rubygems.org'
 gem 'rails_db'
 gem 'chartkick', '~> 1.2.4'
 gem 'groupdate', '~> 2.1.1'
-
+gem 'jquery-ui-rails'
+gem 'scrollreveal-rails'
+gem 'magnific-popup-rails', '~> 1.1.0'
+gem 'jquery-easing-rails'
 
 gem 'nokogiri'
 gem 'openurl'
