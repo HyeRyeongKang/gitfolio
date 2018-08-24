@@ -60,7 +60,7 @@ div#main_content{
 <div class="aa">
     포트폴리오를 만들 Github 아이디를 입력하세요.
     <br><br>
-     <form name="form_name" action="/folio/create" method="post" style="text-align:center">
+     <form name="form_name" action="/folio/new" method="post" style="text-align:center">
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
        <input type="text" name="input_name" placeholder="Please enter your Github ID" class="form-control col-md-3" style="display:inline-block" >
        <input type="submit" value="Submit" class="btn btn-primary">

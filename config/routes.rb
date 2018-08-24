@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get 'folio/index' => 'folio#index'
   get 'folio/intro'=>'folio#intro'
   post '/folio/create'=>'folio#create'
+  post '/folio/new'=>'folio#new'
 #  get "/folio/folio/:id" =>'folio#folio'
 
-    get "/folio/:gid" =>'folio#folio', :constraints => { :gid => /[a-zA-Z0-9_-]+/ }
+  get "/folio/:user_id" =>'folio#folio', :constraints => { :gid => /[a-zA-Z0-9_-]+/ }
 
   post '/folio/excreate'=>'folio#excreate'
   post '/folio/update/:id'=>'folio#update'

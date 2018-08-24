@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180822132049) do
     t.string   "end"
     t.string   "content"
     t.string   "git"
+    t.integer  "folio_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180822132049) do
   create_table "graphs", force: :cascade do |t|
     t.integer  "gid"
     t.string   "lang"
+    t.integer  "folio_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,6 +44,7 @@ ActiveRecord::Schema.define(version: 20180822132049) do
   create_table "infos", force: :cascade do |t|
     t.integer  "gid"
     t.string   "list"
+    t.integer  "folio_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,6 +53,7 @@ ActiveRecord::Schema.define(version: 20180822132049) do
     t.text     "readme"
     t.integer  "rid"
     t.integer  "gid"
+    t.integer  "info_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
