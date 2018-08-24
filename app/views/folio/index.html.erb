@@ -55,7 +55,11 @@ div#main_content{
     
     
     <div class = "face">  
+    <% if @user.avatar.blank? %>
+    <img class = "face_image" src=<%= asset_path 'DSC01965.JPG'%> alt="얼굴사진"height="150px" width ="150px" style="display:inline-block;border-radius: 70px; padding:0px;margin:0px;">
+    <% else %>
     <img class = "face_image" src=<%= @user.avatar %> alt="얼굴사진"height="150px" width ="150px" style="display:inline-block;border-radius: 70px; padding:0px;margin:0px;">
+    <% end %>
     </div>
     <div id="main_content" >
 <div class="aa">
@@ -66,7 +70,7 @@ div#main_content{
        <input type="text" name="input_name" placeholder="Please enter your Github ID" class="form-control col-md-3" style="display:inline-block" >
        <br>
        <textarea name="introduce"class="form-control col-md-3" rows="3" style="display:inline-block" title="포트폴리오를 소개할 말을 입력해주세요"></textarea><br>
-       <input type="submit" value="Submit" class="btn btn-primary">
+       <input type="submit" value="Submit" class="btn btn-default">
       
        <br>
      </form>

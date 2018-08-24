@@ -43,26 +43,105 @@
     <header id="about">
     <!-- Portfolio Item Heading -->
     <br><br><br><br>
-    <h2 class="my-4"><%=@name %>님의 Portfolio</h2>
+<h3>&nbsp;</h3>
 
     <!-- Portfolio Item Row -->
     <div class="row">
-
-      <div class="col-md-4">
+      <div class="col-md-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h3 class="section-heading"><%=@name %>님의 Portfolio</h3>
+            <hr class="my-4">
+          </div>
+        </div>
+        <div class="text-center">
+        <% if @user.avatar.blank? %>
+        <img class="img-fluid" src=<%= asset_path 'DSC01965.JPG'%> width="300px" height="200px" style="border-radius:10px;">
+        <% else %>
         <img class="img-fluid" src=<%= @user.avatar %> width="300px" height="200px" style="border-radius:10px;">
+         <% end %></div>
       </div>
-      <div class="col-md-4">
-        <h3 class="my-3">About <%=@user.name %></h3>
-        <hr>
-        <ul>
-          <li>job : <%=@user.job %></li>
-          <li>email : <%=@user.email %></li>
-          <li>phone : <%=@user.phone %></li>
-          <li>address : <%=@user.address %></li>
-          <li>github : <a href="https://github.com/<%=@name %>"><%=@name %></a></li>
-        </ul>  
+
+                                                               
+
+    </div>
+      <!--<div class="col-md-4">-->
+      <!--   <% if @user.avatar.blank? %>-->
+      <!--  <img class="img-fluid" src=<%= asset_path 'DSC01965.JPG'%> width="300px" height="200px" style="border-radius:10px;">-->
+      <!--  <% else %>-->
+      <!--  <img class="img-fluid" src=<%= @user.avatar %> width="300px" height="200px" style="border-radius:10px;">-->
+      <!--   <% end %>-->
+      <!--</div>-->
+    <!--  <div class="col-md-4">-->
+    <!--    <h3 class="my-3">About <%=@user.name %></h3>-->
+    <!--    <hr>-->
+    <!--    <ul>-->
+    <!--      <li>job : <%=@user.job %></li>-->
+    <!--      <li>email : <%=@user.email %></li>-->
+    <!--      <li>phone : <%=@user.phone %></li>-->
+    <!--      <li>address : <%=@user.address %></li>-->
+    <!--      <li>github : <a href="https://github.com/<%=@name %>"><%=@name %></a></li>-->
+    <!--    </ul>  -->
+    <!--  </div>-->
+      <div class="col-md-7">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h3 class="section-heading">Infomation</h3>
+            <hr class="my-4">
+          </div>
+        </div>
       </div>
+      <div class="container text-center">
+              <div class="col-md-3" style="display:inline-block" >
+            <span class="fa-stack fa-2x" >
+              <i class="fa fa-1x fa-user-circle-o text-primary mb-3 sr-icons" ></i>
+            </span>
+            <h6>name</h6>
+            <p class="service-heading"><%=@user.name %></p>
+            </div>
+              <div class="col-md-3" style="display:inline-block">
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-1x fa-tag text-primary mb-3 sr-icons"></i>
+            </span>
+            <h6>job</h6>
+            <p class="service-heading"><%=@user.job %></p>
+            </div>
+            <div class="col-md-3" style="display:inline-block">
+            <span class="fa-stack fa-2x" >
+              <i class="fa fa-1x fa-calendar text-primary mb-3 sr-icons" ></i>
+            </span>
+            <h6>age</h6>
+            <p class="service-heading" ><%=@user.age %></p>
+            </div>         
+            <br>
+              <div class="col-md-3" style="display:inline-block">
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-1x fa-at text-primary mb-3 sr-icons"></i>
+            </span>
+            <h6>email</h6>
+            <p class="service-heading"><%=@user.email %></p>
+            </div>
+              <div class="col-md-3" style="display:inline-block">
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-1x fa-map-marker text-primary mb-3 sr-icons"></i>
+            </span>
+            <h6>address</h6>
+            <p class="service-heading"><%=@user.address %></p>
+            </div>
+            <div class="col-md-3" style="display:inline-block">
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-1x fa-github text-primary mb-3 sr-icons"></i>
+            </span>
+            <h6>github</h6>
+            <p class="service-heading"><a style="text-decoration:none;color:black" href="https://github.com/<%=@user.github %>"><%=@user.github %></a></p>
+            </div>                                                                
+          </div>
+    </div>
+      
       </div>
+      
       <br><br>
       <div class="row">
       <div class="col-md-4">
@@ -244,8 +323,8 @@
           </div>
           <div class="col-md-4 mb-5 mb-lg-0">
             <h4 class="text-uppercase mb-4">Let's get in touch</h4>
-            <p class="lead mb-0">phone : 010-3691-9891
-            <p class="lead mb-0">email : khr6604@gmail.com
+            <p class="lead mb-0">phone : <%= @user.phone %>
+            <p class="lead mb-0">email : <%= @user.email %>
           </div>
         </div>
       </div>
