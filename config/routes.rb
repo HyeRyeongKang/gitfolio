@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'folio#main'
   get 'folio/index' => 'folio#index'
+  get 'folio/intro'=>'folio#intro'
   post '/folio/create'=>'folio#create'
+  post '/folio/new'=>'folio#new'
 #  get "/folio/folio/:id" =>'folio#folio'
-    get "/folio/:gid" =>'folio#folio', :constraints => { :gid => /[a-zA-Z0-9_-]+/ }
+
+  get "/folio/:user_id" =>'folio#folio', :constraints => { :gid => /[a-zA-Z0-9_-]+/ }
+
+  post '/folio/excreate'=>'folio#excreate'
+  post '/folio/update/:id'=>'folio#update'
+  get '/folio/delete/:id'=>'folio#delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

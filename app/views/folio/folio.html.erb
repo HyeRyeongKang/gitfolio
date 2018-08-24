@@ -7,7 +7,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg bg-secondary fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">GitFolio</a>
+      <a class="navbar-brand js-scroll-trigger" href="/">GitFolio</a>
       <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fa fa-bars"></i>
@@ -23,6 +23,16 @@
           <li class="nav-item mx-0 mx-lg-1">
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
           </li>
+ 
+          <% if user_signed_in? %>
+          <li class="nav-item mx-0 mx-lg-1">
+            <%= link_to "logout", destroy_user_session_path, method: "DELETE" , class: "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"%></a>
+          </li>
+          <% else %>
+          <li class="nav-item mx-0 mx-lg-1">
+             <%= link_to "log in", new_user_session_path, class: "nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" %></a>
+          </li>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -33,27 +43,105 @@
     <header id="about">
     <!-- Portfolio Item Heading -->
     <br><br><br><br>
-    <h2 class="my-4"><%=@name %>님의 Portfolio</h2>
+<h3>&nbsp;</h3>
 
     <!-- Portfolio Item Row -->
     <div class="row">
+      <div class="col-md-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h3 class="section-heading"><%=@name %>님의 Portfolio</h3>
+            <hr class="my-4">
+          </div>
+        </div>
+        <div class="text-center">
+        <% if @user.avatar.blank? %>
+        <img class="img-fluid" src=<%= asset_path 'DSC01965.JPG'%> width="300px" height="200px" style="border-radius:10px;">
+        <% else %>
+        <img class="img-fluid" src=<%= @user.avatar %> width="300px" height="200px" style="border-radius:10px;">
+         <% end %></div>
+      </div>
 
-      <div class="col-md-4">
-        <img class="img-fluid" src="http://placehold.it/300x200" alt="">
+                                                               
+
+    </div>
+      <!--<div class="col-md-4">-->
+      <!--   <% if @user.avatar.blank? %>-->
+      <!--  <img class="img-fluid" src=<%= asset_path 'DSC01965.JPG'%> width="300px" height="200px" style="border-radius:10px;">-->
+      <!--  <% else %>-->
+      <!--  <img class="img-fluid" src=<%= @user.avatar %> width="300px" height="200px" style="border-radius:10px;">-->
+      <!--   <% end %>-->
+      <!--</div>-->
+    <!--  <div class="col-md-4">-->
+    <!--    <h3 class="my-3">About <%=@user.name %></h3>-->
+    <!--    <hr>-->
+    <!--    <ul>-->
+    <!--      <li>job : <%=@user.job %></li>-->
+    <!--      <li>email : <%=@user.email %></li>-->
+    <!--      <li>phone : <%=@user.phone %></li>-->
+    <!--      <li>address : <%=@user.address %></li>-->
+    <!--      <li>github : <a href="https://github.com/<%=@name %>"><%=@name %></a></li>-->
+    <!--    </ul>  -->
+    <!--  </div>-->
+      <div class="col-md-7">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h3 class="section-heading">Infomation</h3>
+            <hr class="my-4">
+          </div>
+        </div>
       </div>
-      <div class="col-md-4">
-        <h3 class="my-3">About 000</h3>
-        <hr>
-        <ul>
-          <li>Web developer</li>
-          <li>email : 0000000000@likelion.org</li>
-          <li>phone : 000-0000-0000</li>
-          <li>address : seoul</li>
-          <li>Inha University</li>
-          <li>github : <a href="https://github.com/HyeRyeongKang">HyeRyeongKang</a></li>
-        </ul>  
+      <div class="container text-center">
+              <div class="col-md-3" style="display:inline-block" >
+            <span class="fa-stack fa-2x" >
+              <i class="fa fa-1x fa-user-circle-o text-primary mb-3 sr-icons" ></i>
+            </span>
+            <h6>name</h6>
+            <p class="service-heading"><%=@user.name %></p>
+            </div>
+              <div class="col-md-3" style="display:inline-block">
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-1x fa-tag text-primary mb-3 sr-icons"></i>
+            </span>
+            <h6>job</h6>
+            <p class="service-heading"><%=@user.job %></p>
+            </div>
+            <div class="col-md-3" style="display:inline-block">
+            <span class="fa-stack fa-2x" >
+              <i class="fa fa-1x fa-calendar text-primary mb-3 sr-icons" ></i>
+            </span>
+            <h6>age</h6>
+            <p class="service-heading" ><%=@user.age %></p>
+            </div>         
+            <br>
+              <div class="col-md-3" style="display:inline-block">
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-1x fa-at text-primary mb-3 sr-icons"></i>
+            </span>
+            <h6>email</h6>
+            <p class="service-heading"><%=@user.email %></p>
+            </div>
+              <div class="col-md-3" style="display:inline-block">
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-1x fa-map-marker text-primary mb-3 sr-icons"></i>
+            </span>
+            <h6>address</h6>
+            <p class="service-heading"><%=@user.address %></p>
+            </div>
+            <div class="col-md-3" style="display:inline-block">
+            <span class="fa-stack fa-2x">
+              <i class="fa fa-1x fa-github text-primary mb-3 sr-icons"></i>
+            </span>
+            <h6>github</h6>
+            <p class="service-heading"><a style="text-decoration:none;color:black" href="https://github.com/<%=@user.github %>"><%=@user.github %></a></p>
+            </div>                                                                
+          </div>
+    </div>
+      
       </div>
-      </div>
+      
       <br><br>
       <div class="row">
       <div class="col-md-4">
@@ -64,32 +152,51 @@
         
       </div>
       <div class="col-md-4">
+        <% if user_signed_in? %>
+        <% if current_user.nick==@folio.user_id %>
+            <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-ex" style="position: absolute; right: 12px;">
+              추가
+            </a>
+        <% end %>
+        <% end %>
+        
+        
         <h3 class="my-3">Experience</h3>
         <hr>
-        <h4>Likelion 6기</h4>
+        <div style="height:400px;padding:30px;overflow-y:none">
+          <div style="position:relative;height:350px;width:330px;overflow-y:auto">
+        <% @experiences.each do |e| %>
+                <div style="position:absolute; right: 12px;">
+                  
+        <% if user_signed_in? %>
+          <% if current_user.nick==@folio.user_id %>
+       <p> <a class="alert-link" href="/folio/delete/<%=e.id %>">삭제 |</a>
+         <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-ex-<%=e.id %>" style="font-weight: bold;">
+              수정
+        </a></p>
+        <% end %>
+        <% end %>
+        </div>
+        <p style="font-size: 28px; font-weight: bold;float:left"><%=e.name %></p>
+        <p style="font-size: 15px; font-weight: bold;float:left;margin-top:15px;margin-left:10px;"><%=e.work %></p>
+        <p style="font-size: 10px; font-weight: bold;clear:left"><%=e.start %>~<%=e.end %></p>
         <ul>
-          <li>어쩌고 저쩌고ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ</li>
+          <li><%=e.content %></li>
         </ul>
         <hr style="border: dotted 1px #d9d9d9";>
-        <h4>Hackerthon</h4>
-        <ul>
-          <li>어쩌고저쩌고~</li>
-        </ul>
-        <hr style="border: dotted 1px #d9d9d9";>
-        <h4>공모전</h4>
-        <ul>
-          <li>어쩌고 저쩌고~</li>
-        </ul>
-        <hr style="border: dotted 1px #d9d9d9";>
-        <h4>인턴</h4>
-        <ul>
-          <li>어쩌고 저쩌고~</li>
-        </ul>
-        <hr style="border: dotted 1px #d9d9d9";>
+         <% end %>
+         </div> 
+         </div>
       </div>
+      
+      
       <div class="col-md-4">
-          <h3 class="my-3">History</h3>
+          <h3 class="my-3">introduce</h3>
           <hr>
+          <div id="intro" style="margin:20px;padding:20px;background-color:#E0F8F75e;height:250px; border-radius:20px;overflow-y:auto">
+            <%=raw @folio.intro.gsub(/\n/, '<br>')%>
+            
+          </div>
       </div>
     </div>
   </header>
@@ -182,9 +289,7 @@
         <div class="col-md-4">
             <h4 class="text-uppercase mb-4">About Team</h4>
             <p class="lead mb-0">Inha University
-            <p class="lead mb-0">LikeLion 6기 제주많은 소녀들
-            <br>
-              <a href="https://likelion.net/">LikeLion</a></p>
+            <p class="lead mb-0"><a href="https://likelion.net/">LikeLion 6기</a> 제주많은 소녀들</p>
           </div>
           <div class="col-md-4 mb-5 mb-lg-0">
             <h4 class="text-uppercase mb-4">Around the Web</h4>
@@ -218,8 +323,8 @@
           </div>
           <div class="col-md-4 mb-5 mb-lg-0">
             <h4 class="text-uppercase mb-4">Let's get in touch</h4>
-            <p class="lead mb-0">phone : 010-3691-9891
-            <p class="lead mb-0">email : khr6604@gmail.com
+            <p class="lead mb-0">phone : <%= @user.phone %>
+            <p class="lead mb-0">email : <%= @user.email %>
           </div>
         </div>
       </div>
@@ -238,9 +343,9 @@
       </a>
     </div>
 
-    <!-- Portfolio Modals -->
+    <!-- ============================================Portfolio Modals============================================ -->
 
-    <!-- Portfolio Modal 1 -->
+    <!-- Project Modal -->
     <% @infos.each do |info| %>
     <% @readme = @readmes.find_by_rid(info.id)%>
     <div class="portfolio-modal mfp-hide" id="portfolio-modal-<%=info.id%>">
@@ -250,10 +355,10 @@
         </a>
         <div class="container text-center">
           <div class="row">
-            <div class="col-lg-8 mx-auto">
+            <div class="col-lg-14 mx-auto">
               <h2 class="text-secondary"><%=info.list%></h2>
               <hr class="star-dark mb-5">
-              <div id="readmebox" style="border:5px dotted lightgray;padding:30px;margin:10px;"><%=raw @readme.readme %></div>
+              <div id="readmebox" style="border:5px dotted lightgray;padding:30px;margin:10px;line-height:2em;"class="text-left"><%=raw @readme.readme %></div>
               <p class="mb-5"><a href="https://github.com/<%=@folio.gid%>/<%=info.list%>"><%=info.list%> 레파지토리로 이동하기</a></p>
               <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#portfolio">
                 <i class="fa fa-close"></i>
@@ -265,6 +370,84 @@
     </div>
     <% end %>
 
+  <!-- 추가 Modal -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-ex">
+      <div class="portfolio-modal-dialog bg-white">
+        <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#portfolio">
+          <i class="fa fa-3x fa-times"></i>
+        </a>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h2 class="text-secondary">경력 추가하기</h2>
+              <hr>
+              <form action="/folio/excreate" method="post">
+    <%=hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <label for="name">회사명</label> &nbsp;&nbsp;&nbsp; <label for="work">직책/직무</label><br>
+   
+    <input type="text" name="name" class="exp">
+    
+    <input type="text" name="work" class="exp"><br>
+    
+     <label for="start">시작날짜</label>&nbsp;&nbsp;&nbsp;
+     <label for="end">종료날짜</label><br>
+    <input type="date" name="start" class="exp">
+    
+    <input type="date" name="end" class="exp"><br>
+    
+    <label for="content">설명</label><br> 
+    <textarea name="content" id="content"></textarea><br>
+    <input type="submit" value="등록" id="send" class="btn btn-primary btn-lg rounded-pill">
+    
+              <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#portfolio">
+                <i class="fa fa-close"></i>
+                취소</a>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 수정 Modal -->
+     <% @experiences.each do |e| %>
+        <div class="portfolio-modal mfp-hide" id="portfolio-modal-ex-<%=e.id %>">
+      <div class="portfolio-modal-dialog bg-white">
+        <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#portfolio">
+          <i class="fa fa-3x fa-times"></i>
+        </a>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h2 class="text-secondary">경력 수정하기</h2>
+              <hr>
+              <form action="/folio/update/<%=e.id %>" method="post">
+    <%=hidden_field_tag :authenticity_token, form_authenticity_token %>
+     <label for="name">회사명</label> &nbsp;&nbsp;&nbsp; <label for="work">직책/직무</label><br>
+   
+    <input type="text" name="name" value=<%= e.name %> class="exp">
+    
+    <input type="text" name="work" value=<%= e.work %> class="exp"><br>
+    
+     <label for="start">시작날짜</label>&nbsp;&nbsp;&nbsp;
+     <label for="end">종료날짜</label><br>
+    <input type="date"value=<%=e.start %> name="start" class="exp">
+    <input type="date" value=<%=e.end %> name="end" class="exp"><br>
+    
+    <label for="content">설명</label><br> 
+    <textarea name="content" id="content"><%=e.content %></textarea><br>
+    <input type="submit" value="수정" id="send" class="btn btn-primary btn-lg rounded-pill">
+    
+              <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#portfolio">
+                <i class="fa fa-close"></i>
+                취소</a>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
     
   </body>
 

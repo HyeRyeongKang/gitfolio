@@ -4,7 +4,7 @@ class CreateReadmes < ActiveRecord::Migration
       t.text :readme
       t.integer :rid
       t.integer :gid
-
+      t.belongs_to :info      
       t.timestamps null: false
     end
   end

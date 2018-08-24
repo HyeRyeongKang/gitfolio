@@ -1,4 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
 
-main 
+  <head>
 
-<%= link_to "index로 이동" , folio_index_path %>
+   
+    <title>GITFOLIO</title>
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">GITFOLIO</a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#services">Service</a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead bg-primary text-white text-center" id="portfolio">
+      <div class="container">
+        <img class="img-fluid mb-5 d-block mx-auto" src="img/profile.png" alt="">
+        <h1 class="text-uppercase mb-0">GITFOLIO</h1>
+       
+        
+        <hr class="star-light">
+        <h2 class="font-weight-light mb-0">
+           <% if user_signed_in? %>
+        <%= link_to "로그아웃", destroy_user_session_path, method: "DELETE", class: "btn btn-light"%>
+        <%= link_to "index로 이동" , folio_index_path, class: "btn btn-light"%>
+        <br>
+        <% else %>
+        <%= link_to "로그인", new_user_session_path, class: "btn btn-light"%>
+        <%= link_to "회원가입", new_user_registration_path, class: "btn btn-light" %>
+        <% end %>
+    
+            </h2>
+      </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading">gitfolio 장점</h2>
+            <hr class="my-4">
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+  <div class="col-lg-3 col-md-6 text-center"><br><br>
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-address-book-o text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">간단한 이력서</h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center"><br><br>
+             <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-check text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">간편하게 정보 가져옴</h3>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center"><br><br>
+             <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-child text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">누구나 사용가능</h3>
+            </div>
+            </div>
+          <div class="col-lg-3 col-md-6 text-center"><br><br>
+            <div class="service-box mt-5 mx-auto">
+               <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-pencil-square-o text-primary mb-3 sr-icons"></i>
+              <h3 class="mb-3">디자인 안해도 됨</h3>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="contact" id="contact">
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h2 class="section-heading">Made by 제주많은소녀들</h2>
+            <hr class="my-4">
+            <p class="mb-5">멋쟁이 사자처럼 6기, 인하대학교</p>
+          </div>
+          </div>
+          </div>
+            <div class="text-center">
+              <div class="row text-center" style="display:inline-block;">
+                  <div class="col-md-3" style="display:inline-block"> <img src=<%= asset_path 'bee.jpg'%> alt="얼굴" height="120px" width ="120px" style="border-radius: 70px">
+                    <br><p>HanbiKim</p>
+                    <i class="material-icons">
+                      info</i><p>https://github.com/hanbi97</p>
+                  </div>
+                  <div class="col-md-3"style="display:inline-block"> <img src=<%= asset_path 'su.jpg'%> alt="얼굴" height="120px" width ="120px" style="border-radius: 70px">
+                    <br><p>jisuKang</p>
+                    <i class="material-icons">
+                      info</i><p>https://github.com/kang-jisu</p>
+                  </div>                  
+                  <div class="col-md-3" style="display:inline-block"> <img src=<%= asset_path 'ryeong.jpg'%> alt="얼굴" height="120px" width ="120px" style="border-radius: 70px">
+                    <br><p>HyeRyeongKang</p>
+                    <i class="material-icons">
+                      info</i><p>https://github.com/HyeRyeongKang</p>
+                  </div>
+                  <div class="col-md-3" style="display:inline-block"> <img src=<%= asset_path 'jung.jpg'%> alt="얼굴" height="120px" width ="120px" style="border-radius: 70px">
+                    <br><p>sojungYi</p>
+                    <i class="material-icons">
+                      info</i><p>https://github.com/YiSojeong</p>
+                  </div>
+                  <div class="col-md-3" style="display:inline-block"> <img src=<%= asset_path 'boyun.jpg'%> alt="얼굴" height="120px" width ="120px" style="border-radius: 70px">
+                    <br><p>boyunKang</p>
+                    <i class="material-icons">
+                      info</i><p>https://github.com/boyunjjang1</p>
+                  </div>                  
+<!--</div>-->
+<!--            </div>-->
+          </div>
+        </div>
+      </div>
+</section>
+    
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">ABOUT TEAM</h4>
+            <p class="lead mb-0">Inha University<br>
+            LikeLion 6기 제주많은 소녀들</p>
+          </div>
+          <div class="col-md-4">
+            <h4 class="text-uppercase mb-4">LIKELION at INHA</h4>
+            <p class="lead mb-0">
+              <img class = "face_image" src=<%= asset_path 'lion.png'%> alt="얼굴사진"height="150px" width ="150px" style="display:inline-block;border-radius: 70px; padding:0px;margin:0px;">
+     
+          </div>
+          <div class="col-md-4">
+            <h4 class="text-uppercase mb-4">LET'S GET IN TOUCH</h4>
+            <p class="lead mb-0">
+              <a href="http://startbootstrap.com"></a>예쁘게봐주세요~<br> σ(≧ε≦ｏ)</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="copyright py-4 text-center text-white">
+      <div class="container">
+        <small>Copyright &copy; 제주많은소녀들 2018</small>
+      </div>
+    </div>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-to-top d-lg-none position-fixed ">
+      <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+      </a>
+    </div>
+
+   
+  </body>
+
+</html>
