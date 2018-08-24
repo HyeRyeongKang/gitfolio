@@ -6,6 +6,6 @@ class AddUserInfoToUsers < ActiveRecord::Migration
     add_column :users, :job, :string
     add_column :users, :address, :string
     add_column :users, :github, :string
-    add_column :users, :nick, :string
+    add_column :users, :nick, :string, unique: true
   end
 end

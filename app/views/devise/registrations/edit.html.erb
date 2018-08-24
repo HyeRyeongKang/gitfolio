@@ -12,8 +12,7 @@
 
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
-                required: false
-                input_html: { autocomplete: "new-password" } %>
+                required: false %>
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
@@ -21,6 +20,30 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.label :name %>
+    <%= f.text_field :name, autofocus: false, class: 'form-control' %>
+    <br>
+    <%= f.label :nick %>(영문, 숫자의 조합으로 입력해주세요)
+    <%= f.text_field :nick, autofocus: false, class: 'form-control' %>
+    <br>
+    <%= f.label :age %>
+    <%= f.number_field :age, autofocus: false, class: 'form-control' %>
+    <br>
+    <%= f.label :phone %>
+    <%= f.telephone_field :phone, autofocus: false, class: 'form-control' %>
+    <br>
+    <%= f.label :job %>
+    <%= f.text_field :job, autofocus: false, class: 'form-control' %>
+    <br>
+    <%= f.label :address %>
+    <%= f.text_field :address, autofocus: false, class: 'form-control' %>
+    <br>
+    <%= f.label :avatar %>
+    <%= f.file_field :avatar, autofocus: false, class: 'form-control' %>
+    <br>
   </div>
 
   <div class="form-actions">

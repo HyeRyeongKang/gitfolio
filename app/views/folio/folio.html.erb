@@ -49,7 +49,7 @@
     <div class="row">
 
       <div class="col-md-4">
-        <img class="img-fluid" src="http://placehold.it/300x200" alt="">
+        <img class="img-fluid" src=<%= @user.avatar %> width="300px" height="200px" style="border-radius:10px;">
       </div>
       <div class="col-md-4">
         <h3 class="my-3">About <%=@user.name %></h3>
@@ -80,29 +80,37 @@
             </a>
         <% end %>
         <% end %>
+        
+        
         <h3 class="my-3">Experience</h3>
         <hr>
+        <div style="height:400px;padding:30px;overflow-y:none">
+          <div style="position:relative;height:350px;width:330px;overflow-y:auto">
         <% @experiences.each do |e| %>
-                <div style="position: absolute; right: 12px;">
+                <div style="position:absolute; right: 12px;">
                   
         <% if user_signed_in? %>
           <% if current_user.nick==@folio.user_id %>
-        <a class="alert-link" href="/folio/delete/<%=e.id %>">삭제 |</a>
+       <p> <a class="alert-link" href="/folio/delete/<%=e.id %>">삭제 |</a>
          <a class="portfolio-item d-block mx-auto" href="#portfolio-modal-ex-<%=e.id %>" style="font-weight: bold;">
               수정
-        </a>
+        </a></p>
         <% end %>
         <% end %>
         </div>
-        <p style="font-size: 28px; font-weight: bold;"><%=e.name %></p>
-        <p style="font-size: 15px; font-weight: bold;"><%=e.work %></p>
-        <p style="font-size: 10px; font-weight: bold;"><%=e.start %>~<%=e.end %></p>
+        <p style="font-size: 28px; font-weight: bold;float:left"><%=e.name %></p>
+        <p style="font-size: 15px; font-weight: bold;float:left;margin-top:15px;margin-left:10px;"><%=e.work %></p>
+        <p style="font-size: 10px; font-weight: bold;clear:left"><%=e.start %>~<%=e.end %></p>
         <ul>
           <li><%=e.content %></li>
         </ul>
         <hr style="border: dotted 1px #d9d9d9";>
          <% end %>
+         </div> 
+         </div>
       </div>
+      
+      
       <div class="col-md-4">
           <h3 class="my-3">introduce</h3>
           <hr>
@@ -268,10 +276,10 @@
         </a>
         <div class="container text-center">
           <div class="row">
-            <div class="col-lg-8 mx-auto">
+            <div class="col-lg-14 mx-auto">
               <h2 class="text-secondary"><%=info.list%></h2>
               <hr class="star-dark mb-5">
-              <div id="readmebox" style="border:5px dotted lightgray;padding:30px;margin:10px;"><%=raw @readme.readme %></div>
+              <div id="readmebox" style="border:5px dotted lightgray;padding:30px;margin:10px;line-height:2em;"class="text-left"><%=raw @readme.readme %></div>
               <p class="mb-5"><a href="https://github.com/<%=@folio.gid%>/<%=info.list%>"><%=info.list%> 레파지토리로 이동하기</a></p>
               <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#portfolio">
                 <i class="fa fa-close"></i>
@@ -296,16 +304,16 @@
               <hr>
               <form action="/folio/excreate" method="post">
     <%=hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <label for="name">회사명</label><br>
-    <input type="text" name="name" class="exp"><br>
+    <label for="name">회사명</label> &nbsp;&nbsp;&nbsp; <label for="work">직책/직무</label><br>
+   
+    <input type="text" name="name" class="exp">
     
-     <label for="work">직책/직무</label><br>
     <input type="text" name="work" class="exp"><br>
     
-     <label for="start">시작날짜</label><br>
-    <input type="date" name="start" class="exp"><br>
-    
+     <label for="start">시작날짜</label>&nbsp;&nbsp;&nbsp;
      <label for="end">종료날짜</label><br>
+    <input type="date" name="start" class="exp">
+    
     <input type="date" name="end" class="exp"><br>
     
     <label for="content">설명</label><br> 
@@ -332,21 +340,20 @@
         <div class="container text-center">
           <div class="row">
             <div class="col-lg-8 mx-auto">
-              <h2 class="text-secondary">경력 추가하기</h2>
+              <h2 class="text-secondary">경력 수정하기</h2>
               <hr>
               <form action="/folio/update/<%=e.id %>" method="post">
     <%=hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <label for="name">회사명</label><br>
-    <input type="text" name="name" class="exp" value="<%=e.name %>"><br>
+     <label for="name">회사명</label> &nbsp;&nbsp;&nbsp; <label for="work">직책/직무</label><br>
+   
+    <input type="text" name="name" value=<%= e.name %> class="exp">
     
-     <label for="work">직책/직무</label><br>
-    <input type="text" name="work" class="exp" value="<%=e.work %>"><br>
+    <input type="text" name="work" value=<%= e.work %> class="exp"><br>
     
-     <label for="start">시작날짜</label><br>
-    <input type="date" name="start" class="exp" value="<%=e.start %>"><br>
-    
+     <label for="start">시작날짜</label>&nbsp;&nbsp;&nbsp;
      <label for="end">종료날짜</label><br>
-    <input type="date" name="end" class="exp" value="<%=e.end %>"><br>
+    <input type="date"value=<%=e.start %> name="start" class="exp">
+    <input type="date" value=<%=e.end %> name="end" class="exp"><br>
     
     <label for="content">설명</label><br> 
     <textarea name="content" id="content"><%=e.content %></textarea><br>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180822132049) do
+ActiveRecord::Schema.define(version: 20180824092324) do
 
   create_table "experiences", force: :cascade do |t|
     t.string   "usernick"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20180822132049) do
     t.string   "address"
     t.string   "github"
     t.string   "nick"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

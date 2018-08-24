@@ -36,7 +36,8 @@ div#main_content{
             <a class="nav-link py-3 px-0 px-lg-3 rounded " href="#about">About</a>
           </li>
           <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded " href="#portfolio">My Page</a>
+              <%= link_to 'My Page' , edit_user_registration_path, class: "nav-link py-3 px-0 px-lg-3 rounded " %>
+            <!-- <a class="nav-link py-3 px-0 px-lg-3 rounded " href=edit_user_registration >My Page</a>  -->
           </li>
           <li class="nav-item mx-0 mx-lg-1">
             <div class="nav-link py-3 px-0 px-lg-3 rounded ">
@@ -54,7 +55,7 @@ div#main_content{
     
     
     <div class = "face">  
-    <img class = "face_image" src=<%= asset_path 'DSC01965.JPG'%> alt="얼굴사진"height="150px" width ="150px" style="display:inline-block;border-radius: 70px; padding:0px;margin:0px;">
+    <img class = "face_image" src=<%= @user.avatar %> alt="얼굴사진"height="150px" width ="150px" style="display:inline-block;border-radius: 70px; padding:0px;margin:0px;">
     </div>
     <div id="main_content" >
 <div class="aa">
@@ -66,6 +67,7 @@ div#main_content{
        <br>
        <textarea name="introduce"class="form-control col-md-3" rows="3" style="display:inline-block" title="포트폴리오를 소개할 말을 입력해주세요"></textarea><br>
        <input type="submit" value="Submit" class="btn btn-primary">
+      
        <br>
      </form>
 </div>
