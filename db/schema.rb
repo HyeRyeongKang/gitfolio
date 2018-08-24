@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180822132049) do
   create_table "folios", force: :cascade do |t|
     t.string   "user_id"
     t.string   "gid"
+    t.text     "intro"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

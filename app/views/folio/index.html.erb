@@ -58,11 +58,13 @@ div#main_content{
     </div>
     <div id="main_content" >
 <div class="aa">
-    포트폴리오를 만들 Github 아이디를 입력하세요.
+    포트폴리오를 만들 Github 아이디와 소개를 입력하세요.
     <br><br>
      <form name="form_name" action="/folio/new" method="post" style="text-align:center">
           <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
        <input type="text" name="input_name" placeholder="Please enter your Github ID" class="form-control col-md-3" style="display:inline-block" >
+       <br>
+       <textarea name="introduce"class="form-control col-md-3" rows="3" style="display:inline-block" title="포트폴리오를 소개할 말을 입력해주세요"></textarea><br>
        <input type="submit" value="Submit" class="btn btn-primary">
        <br>
      </form>

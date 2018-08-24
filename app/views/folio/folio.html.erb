@@ -104,14 +104,12 @@
          <% end %>
       </div>
       <div class="col-md-4">
-        
-        <% if user_signed_in? %>
-        <% if current_user.nick==@folio.user_id %>
-        <a class="alert-link" href="/folio/intro" style="position: absolute; right: 12px;">수정</a>
-        <% end %>
-        <% end %>
-          <h3 class="my-3">History</h3>
+          <h3 class="my-3">introduce</h3>
           <hr>
+          <div id="intro" style="margin:20px;padding:20px;background-color:#E0F8F75e;height:250px; border-radius:20px;overflow-y:auto">
+            <%=raw @folio.intro.gsub(/\n/, '<br>')%>
+            
+          </div>
       </div>
     </div>
   </header>
